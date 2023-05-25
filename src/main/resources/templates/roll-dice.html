@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roll Dice</title>
+</head>
+<body>
+<!--//There should be links on this page for 1 through 6 that should make a GET request to /roll-dice/n where n is the number guessed. This page should display a random number (the dice roll), the user's guess and a message based on whether or not they guessed the correct number.-->
+
+<h1>Roll Dice</h1>
+<h2>Guess a number between 1 and 6</h2>
+<a href="/roll-dice/1">1</a>
+<a href="/roll-dice/2">2</a>
+<a href="/roll-dice/3">3</a>
+<a href="/roll-dice/4">4</a>
+<a href="/roll-dice/5">5</a>
+<a href="/roll-dice/6">6</a>
+
+<h2 th:if="${n}">
+    <p>You guessed [[${n}]]</p>
+    <p>The dice rolled [[${random}]]</p>
+    <p th:if="${n == random}">You guessed correctly!</p>
+    <p th:if="${n != random}">You guessed incorrectly!</p>
+
+</h2>
+
+
+
+
+</body>
+</html>

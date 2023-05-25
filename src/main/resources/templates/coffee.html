@@ -12,8 +12,23 @@
         <li><a href="/coffee/medium">Medium Roast</a></li>
         <li><a href="/coffee/light">LightRoast</a></li>
     </ul>
-    <h2 th:if="${roast}"></h2>
-<!--    <p>You selected <span th:text="${roast}"></span> roast!</p>-->
-        <p>You selected [[${roast}]] roast!</p>
+    <h2 th:if="${coffees}">
+        <p>You selected [[${roast}]] roast! Here's our selection:</p>
+        <ul>
+            <li th:each="coffee : ${coffees}">
+                <p>[[${coffee.brand}]] [[${coffee.origin}]] [[${coffee.roast}]] roast</p>
+            </li>
+        </ul>
+
+    </h2>
+    <h2>Sign up for our newsletter!</h2>
+    <form action="/coffee" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email">
+        <button type="submit">Sign up</button>
+    </form>
+<h4 th:if="${email}">Thanks for signing up for our news letter! We'll send the letter to [[${email}]]</h4>
 </body>
 </html>
