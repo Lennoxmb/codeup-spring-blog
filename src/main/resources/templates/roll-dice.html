@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--<head th:replace="partials/head :: head ('Roll the Dice')">-->
     <meta charset="UTF-8">
-    <title>Roll Dice</title>
+    <title>Title</title>
 </head>
 <body>
-<!--//There should be links on this page for 1 through 6 that should make a GET request to /roll-dice/n where n is the number guessed. This page should display a random number (the dice roll), the user's guess and a message based on whether or not they guessed the correct number.-->
+<nav th:replace="partials/navbar :: navbar"></nav>
 
 <h1>Roll Dice</h1>
 <h2>Guess a number between 1 and 6</h2>
@@ -20,12 +20,9 @@
     <p>You guessed [[${n}]]</p>
     <p>The dice rolled [[${random}]]</p>
     <p th:if="${n == random}">You guessed correctly!</p>
-    <p th:if="${n != random}">You guessed incorrectly!</p>
+    <p th:if="${n != random}">You fail.</p>
 
 </h2>
-
-
-
-
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>

@@ -3,24 +3,31 @@ package com.codeup.codeupspringblog.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.codeup.codeupspringblog.models.Post;
+import java.util.ArrayList;
 
 @Controller
 public class PostController {
 
     @GetMapping("/posts")
-    @ResponseBody
-    public String posts() {
-        return "posts index page";
+    public String allPosts(Model model) {
+        ArrayList<Post> posts = new ArrayList<>();
+
+        model.addAttribute("posts", posts);
+        return "/posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String viewPost() {
-        return "view an individual post";
+    public String postShow(Model model) {
+        Post post = new Post("Test Title", "Test Body", 1L);
+        model.addAttribute("post", post);
+
+        return "/posts/show";
     }
 
     @GetMapping("/posts/create")
@@ -34,16 +41,6 @@ public class PostController {
     public String submitForm() {
         return "create a new post";
     }
-
-//    @RequestMapping(path = "/posts/create", method = {RequestMethod.GET, RequestMethod.POST})
-//    @ResponseBody
-//    public String postsCreate(HttpServletRequest request) {
-//        if (request.getMethod().equals("GET")) {
-//            return "view the form for creating a post";
-//        } else {
-//            return "create a new post";
-//        }
-//    }
 
 }
 
